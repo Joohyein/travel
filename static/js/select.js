@@ -6,7 +6,7 @@ let Sweet = 'global';
 $(document).ready(function(){
     $('.question-hot').hide();
     $('.question-sweet').hide();
-    $('.result-btn').hide();
+    $('.result').hide();
 });
 
 function caff(num) {
@@ -15,7 +15,7 @@ function caff(num) {
     $('.question-caffeine').hide();
     $('.question-hot').show();
     $('.question-sweet').hide();
-    $('.result-btn').hide();
+    $('.result').hide();
 }
 function hot(num) {
     Hot = num;
@@ -23,7 +23,7 @@ function hot(num) {
     $('.question-caffeine').hide();
     $('.question-hot').hide();
     $('.question-sweet').show();
-    $('.result-btn').hide();
+    $('.result').hide();
 }
 
 function sweet(num) {
@@ -32,7 +32,7 @@ function sweet(num) {
     $('.question-caffeine').hide();
     $('.question-hot').hide();
     $('.question-sweet').hide();
-    $('.result-btn').show();
+    $('.result').show();
     $('.description').hide();
 }
 
