@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-import certifi, random, json
+import certifi, random
 ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
@@ -24,24 +24,40 @@ def Coffee_post():
    Caffeine = int(request.form['Caffeine_give'])
    Hot = int(request.form['Hot_give'])
    Sweet = int(request.form['Sweet_give'])
+   if Caffeine == 0 and Hot == 0 and Sweet == 0: #000 쌉/차/디 SCD
+       return jsonify({'msg':'/result/SCD'})
+   elif Caffeine == 0 and Hot == 0 and Sweet == 1:#001 달/차/디 DCD
+        return jsonify({'msg': '/result/DCD'})
+   elif Caffeine == 0 and Hot == 1 and Sweet == 0:#010 쌉/뜨/디 SDD
+        return jsonify({'msg': '/result/SDD'})
+   elif Caffeine == 0 and Hot == 1 and Sweet == 1:#011 달/뜨/디 DDD
+        return jsonify({'msg': '/result/DDD'})
+   elif Caffeine == 1 and Hot == 0 and Sweet == 0:#100 쌉/차/카 SCC
+        return jsonify({'msg': '/result/SCC'})
+   elif Caffeine == 1 and Hot == 0 and Sweet == 1:#101 달/차/카 DCC
+        return jsonify({'msg': '/result/DCC'})
+   elif Caffeine == 1 and Hot == 1 and Sweet == 0:#110 쌉/뜨/카 SDC
+        return jsonify({'msg': '/result/SDC'})
+   elif Caffeine == 1 and Hot == 1 and Sweet == 1:#111 달/뜨/카 DDC
+        return jsonify({'msg': '/result/DDC'})
 
-   if Caffeine == 0 and Hot == 0 and Sweet == 0:
-      return jsonify({'msg':'/result/SCD'})#쌉차디
-   if Caffeine == 0 and Hot == 0 and Sweet == 1:
-      return jsonify({'msg': '/result/DCD'})#달차디
-   if Caffeine == 0 and Hot == 1 and Sweet == 0:
-      return jsonify({'msg': '/result/CDD'})  # 쌉뜨디
-   if Caffeine == 0 and Hot == 1 and Sweet == 1:
-      return jsonify({'msg': '/result/DDD'})  # 달뜨디
-   if Caffeine == 1 and Hot == 0 and Sweet == 0:
-      return jsonify({'msg':'/result/SCC'})#쌉차카
-   if Caffeine == 1 and Hot == 0 and Sweet == 1:
-      return jsonify({'msg': '/result/DCC'})#달차카
-   if Caffeine == 1 and Hot == 1 and Sweet == 0:
-      return jsonify({'msg': '/result/SDC'})  # 쌉뜨카
-   if Caffeine == 1 and Hot == 1 and Sweet == 1:
-      return jsonify({'msg': '/result/DDC'})  #달뜨카
 
+   # if Caffeine == 0 and Hot == 0 and Sweet == 0:
+   #    return jsonify({'msg':'/result/SCD'})#쌉차디//000
+   # if Caffeine == 0 and Hot == 0 and Sweet == 1:
+   #    return jsonify({'msg': '/result/DCD'})#달차디001
+   # if Caffeine == 0 and Hot == 1 and Sweet == 0:
+   #    return jsonify({'msg': '/result/SDD'})  # 쌉뜨디010
+   # if Caffeine == 0 and Hot == 1 and Sweet == 1:
+   #    return jsonify({'msg': '/result/DDD'})  # 달뜨디011
+   # if Caffeine == 1 and Hot == 0 and Sweet == 0:
+   #    return jsonify({'msg':'/result/SCC'})#쌉차카100
+   # if Caffeine == 1 and Hot == 0 and Sweet == 1:
+   #    return jsonify({'msg': '/result/DCC'})#달차카101
+   # if Caffeine == 1 and Hot == 1 and Sweet == 0:
+   #    return jsonify({'msg': '/result/SDC'})  # 쌉뜨카110
+   # if Caffeine == 1 and Hot == 1 and Sweet == 1:
+   #    return jsonify({'msg': '/result/DDC'})  #달뜨카111
 
 @app.route('/result/SCC')#쌉/차/카
 def resultSCC():
