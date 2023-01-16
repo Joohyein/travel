@@ -15,7 +15,9 @@
     <title>Title</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <style>
         html, body {
             width: 100%;
@@ -25,6 +27,16 @@
 
         * {
             font-family: 'Nanum Pen Script', cursive;
+        }
+        .title, .subtitle{
+            font-family: 'Righteous', cursive;
+        }
+        .title {
+            font-size:100px;
+            margin-bottom: 30px;
+        }
+        .subtitle {
+            margin-top: 24px;
         }
 
         .mytitle {
@@ -72,8 +84,13 @@
 
 <body>
 <div class="mytitle">
-    <h1 class="title" id='title'> 커피커피!</h1>
+    <h1 class="title"> CRUD </h1>
     <button id='button' onclick="location.href='/select'">나에게 맞는 커피는?</button>
+    <h3 class="subtitle">Choose<br>
+        Random<br>
+        Ur<br>
+        Drink<br>
+    </h3>
 </div>
 
 </body>
