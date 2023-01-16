@@ -2,9 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Select</title>
+    <link rel="stylesheet" href="../static/css/select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src = "../static/js/select.js"></script>
+    <script src="https://kit.fontawesome.com/642a9c9cc4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    <header class="container">
+        <a class="header__title" href="index.html">
+            <div class="back">
+                <i class="fa-solid fa-chevron-left fa-sm"></i>
+            </div>
+            <div class="title">
+                cupick
+            </div>
+        </a>
+    </header>
+    <section class="container">
+        <div class="description">
+            골라주세요
+        </div>
+        <div class="question">
+            <div class="question-caffeine">
+                1
+                <a class="drink-img" href="#" onclick="caff(1)">
+                    <img src="../static/image/caffeine.png" />
+                    <div class="drink-desc">
+                        <h3>Caffeine</h3>
+                    </div>
+                </a>
+                <a class="drink-img" href="#" onclick="caff(0)">
+                    <img src="../static/image/decaffeine.png" />
+                    <div class="drink-desc">
+                        <h3>Decaffeine</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="question-hot">
+                2
+                <a class="drink-img" href="#" onclick="hot(1)">
+                    <img src="../static/image/hot.png" />
+                    <div class="drink-desc">
+                        <h3>Hot</h3>
+                    </div>
+                </a>
+                <a class="drink-img" href="#" onclick="hot(0)">
+                    <img src="../static/image/ice.png" />
+                    <div class="drink-desc">
+                        <h3>Ice</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="question-sweet">
+                3
+                <a class="drink-img" href="#" onclick="sweet(0)">
+                    <img src="../static/image/sweet.png" />
+                    <div class="drink-desc">
+                        <h3>Sweet</h3>
+                    </div>
+                </a>
+                <a class="drink-img" href="#" onclick="sweet(1)">
+                    <img src="../static/image/bitter.png" />
+                    <div class="drink-desc">
+                        <h3>Bitter</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <a class="result-btn" href="#">
+        <button>결과 확인</button>
+    </a>
 </body>
 </html>
