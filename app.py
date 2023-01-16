@@ -7,3 +7,8 @@ from pymongo import MongoClient
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
 client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
+
+doc = {
+         'td' : "이름을 적어주세요"
+    }
+db.trevel.insert_one(doc)
