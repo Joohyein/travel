@@ -2,31 +2,14 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-
-import random
-#import certifi
-#ca = certifi.where()
-#client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
-client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
-
-import certifi, random
-
+import certifi, random, json
 ca = certifi.where()
+client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
 #랜덤 예시
 #random.randint(1,3)
 #1~3까지의 수 랜덤
-
-
-@app.route('/result/DDD')#달/뜨/디
-def resultDDD():
-   return render_template('result_DDD.html')
-@app.route("/result/DDD", methods=["GET"])
-def DDD_get():
-    rand = random.randint(1, 3)
-    return jsonify({'Cafe':db.CafeDalDuDe.find_one({'id': int(rand)})})
-
 
 @app.route('/')
 def home():
@@ -62,39 +45,67 @@ def Coffee_post():
 
 @app.route('/result/SCC')#쌉/차/카
 def resultSCC():
-   return render_template('result/SCC.html')
+   return render_template('result_SCC.html')
 
-@app.route("/result/SCC", methods=["GET"])
+@app.route("/result/SCC1", methods=["GET"])
 def SCC_get():
     rand = random.randint(1, 3)
-    return jsonify({'Cafe':db.CafeSapChaCa.find_one({'id': int(rand)})})
+    data = db.CafeSapChaCa.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink':drink,
+        'image_url':img
+    }
+    return jsonify({'Cafe':cafe_data})
 
 @app.route('/result/DCC')#달/차/카
 def resultDCC():
-   return render_template('result/DCC.html')
+   return render_template('result_DCC.html')
 
-@app.route("/result/DCC", methods=["GET"])
+@app.route("/result/DCC1", methods=["GET"])
 def DCC_get():
     rand = random.randint(1, 4)
-    return jsonify({'Cafe':db.CafeDalChaCa.find_one({'id': int(rand)})})
+    data = db.CafeDalChaCa.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/SDC')#쌉/뜨/카
 def resultSDC():
-   return render_template('result/SDC.html')
+   return render_template('result_SDC.html')
 
-@app.route("/result/SDC", methods=["GET"])
+@app.route("/result/SDC1", methods=["GET"])
 def SDC_get():
     rand = random.randint(1, 2)
-    return jsonify({'Cafe':db.CafeSapDuCa.find_one({'id': int(rand)})})
+    data = db.CafeSapDuCa.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/DDC')#달/뜨/카
 def resultDDC():
-   return render_template('result/DDC.html')
+   return render_template('result_DDC.html')
 
-@app.route("/result/DDC", methods=["GET"])
+@app.route("/result/DDC1", methods=["GET"])
 def DDC_get():
     rand = random.randint(1, 3)
-    return jsonify({'Cafe':db.CafeDalDuCa.find_one({'id': int(rand)})})
+    data = db.CafeDalDuCa.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/DDD')#달/뜨/디
 def resultDDD():
@@ -103,35 +114,63 @@ def resultDDD():
 @app.route("/result/DDD1", methods=["GET"])
 def DDD_get():
     rand = random.randint(1, 3)
-    Cafe_menu = db.CafeDalDuDe.find_one({'id': int(rand)})
-    return jsonify({'Cafe':[Cafe_menu]})
+    data = db.CafeDalDuDe.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/SDD')#쌉/뜨/디  //2개
 def resultSDD():
-   return render_template('result/SDD.html')
+   return render_template('result_SDD.html')
 
-@app.route("/result/SDD", methods=["GET"])
+@app.route("/result/SDD1", methods=["GET"])
 def SDD_get():
     rand = random.randint(1, 2)
-    return jsonify({'Cafe':db.CafeSapDuDe.find_one({'id': int(rand)})})
+    data = db.CafeSapDuDe.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/DCD')#달/차/디 //3개
 def resultDCD():
-   return render_template('result/DCD.html')
+   return render_template('result_DCD.html')
 
-@app.route("/result/DCD", methods=["GET"])
+@app.route("/result/DCD1", methods=["GET"])
 def DCD_get():
     rand = random.randint(1, 3)
-    return jsonify({'Cafe':db.dbsparta.CafeDalChaDe.find_one({'id': int(rand)})})
+    data = db.CafeDalChaDe.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
 
 @app.route('/result/SCD')#쌉/차/디 //3개
 def resultSCD():
-   return render_template('result/SCD.html')
+   return render_template('result_SCD.html')
 
-@app.route("/result/SCD", methods=["GET"])
+@app.route("/result/SCD1", methods=["GET"])
 def SCD_get():
     rand = random.randint(1, 3)
-    return jsonify({'Cafe':db.CafeSapChaDe.find_one({'id': int(rand)})})
+    data = db.CafeSapChaDe.find_one({'id': int(rand)})
+    drink = data['Drink']
+    img = data['image_url']
+    cafe_data = {
+        'Drink': drink,
+        'image_url': img
+    }
+    return jsonify({'Cafe': cafe_data})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
