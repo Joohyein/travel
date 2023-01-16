@@ -7,15 +7,6 @@ $(document).ready(function(){
     $('.question-hot').hide();
     $('.question-sweet').hide();
     $('.result-btn').hide();
-
-    $.ajax({
-        type: "POST",
-        url: "/select/result",
-        data: {'caffeine_give':Caff, 'hot_give':Hot, 'sweet_give':Sweet},
-        success: function (response) {
-
-        }
-    })
 });
 
 function caff(num) {
@@ -40,4 +31,17 @@ function sweet(num) {
     $('.question-sweet').hide();
     $('.result-btn').show();
     $('.description').hide();
+}
+
+function btnClick() {
+      $.ajax({
+        type: "POST",
+        url: "/select/result",
+        data: {"Caffeine_give":Caff, "Hot_give":Hot, "Sweet_give":Sweet},
+        success: function (response) {
+            let url = response['msg']
+            console.log(url);
+            $(location).attr('href',$(url));
+        }
+      })
 }

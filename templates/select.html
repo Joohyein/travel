@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="container">
-        <a class="header__title" href="index.html">
+        <a class="header__title" href="/">
             <div class="back">
                 <i class="fa-solid fa-chevron-left fa-sm"></i>
             </div>
@@ -25,7 +25,6 @@
         </div>
         <div class="question">
             <div class="question-caffeine">
-                1
                 <a class="drink-img" href="#" onclick="caff(1)">
                     <img src="../static/image/caffeine.png" />
                     <div class="drink-desc">
@@ -40,7 +39,6 @@
                 </a>
             </div>
             <div class="question-hot">
-                2
                 <a class="drink-img" href="#" onclick="hot(1)">
                     <img src="../static/image/hot.png" />
                     <div class="drink-desc">
@@ -55,7 +53,6 @@
                 </a>
             </div>
             <div class="question-sweet">
-                3
                 <a class="drink-img" href="#" onclick="sweet(0)">
                     <img src="../static/image/sweet.png" />
                     <div class="drink-desc">
@@ -71,8 +68,14 @@
             </div>
         </div>
     </section>
-    <a class="result-btn" href="#">
-        <button>결과 확인</button>
+    <a class="result-btn" onclick="btnClick()">
+        <button  class="button-82-pushable" role="button">
+          <span class="button-82-shadow"></span>
+          <span class="button-82-edge"></span>
+          <span class="button-82-front text">
+            Result3
+          </span>
+        </button>
     </a>
 </body>
 </html>
