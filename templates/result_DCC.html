@@ -22,9 +22,27 @@
 
         <style>
             * {
-                font-family: font-family: 'Single Day', cursive;
+                margin :0;
+                padding :0;
+                color : #000;
+                font-family : 'Pretendard';
+                box-sizing : border-box;
             }
-
+            .container {
+                width: 736px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #body {
+                width:736px;
+                height: 95%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
             .name {
                 width: 100%;
                 height: 250px;
@@ -41,26 +59,31 @@
             }
 
             .img {
-                width: 95%;
+                width: 100%;
+                height : 500px;
                 max-width: 500px;
                 margin: auto;
-                padding: auto;
-
+            }
+            .img img {
+                width:100%;
+                height: 100%;
             }
 
             .comment {
                 width: 100%;
-                height: 250px;
 
                 background-position: center;
                 background-size: cover;
 
+                font-size: 20px;
                 color: black;
 
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+
+                margin:20px auto;
             }
 
             .backhome > button {
@@ -126,25 +149,26 @@
 </head>
 
 <body>
-<div id = "body">
+    <section class="container">
+        <div id = "body">
 
-</div>
-<!--<div class="name">-->
-<!--  <h1>${name}</h1>-->
-<!--</div>-->
+        </div>
+        <!--<div class="name">-->
+        <!--  <h1>${name}</h1>-->
+        <!--</div>-->
 
-<!--<div class="img">-->
-<!--  <img src="$(img_url}"/>-->
-<!--</div>-->
+        <!--<div class="img">-->
+        <!--  <img src="$(img_url}"/>-->
+        <!--</div>-->
 
-<!--<div class="comment">-->
-<!--  <p>${comment}</p>-->
-<!--</div>-->
+        <!--<div class="comment">-->
+        <!--  <p>${comment}</p>-->
+        <!--</div>-->
 
-<div class="backhome">
-  <button onclick=location.href='/'>홈으로</button>
-</div>
-
+        <div class="backhome">
+          <button onclick=location.href='/'>홈으로</button>
+        </div>
+    </section>
 
 </body>
 </html>
