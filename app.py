@@ -2,24 +2,23 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-<<<<<<< HEAD
+
 import random
 #import certifi
 #ca = certifi.where()
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
 client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
-=======
+
 import certifi, random
+
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority',  tlsCAFile=ca)
 #client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/cluster0?retryWrites=true&w=majority')
->>>>>>> d661709447461c14cb68b9b7307e7e05419d315f
 db = client.dbsparta
 #랜덤 예시
 #random.randint(1,3)
 #1~3까지의 수 랜덤
 
-<<<<<<< HEAD
+
 @app.route('/result/DDD')#달/뜨/디
 def resultDDD():
    return render_template('result_DDD.html')
@@ -27,7 +26,8 @@ def resultDDD():
 def DDD_get():
     rand = random.randint(1, 3)
     return jsonify({'Cafe':db.CafeDalDuDe.find_one({'id': int(rand)})})
-=======
+
+
 @app.route('/')
 def home():
    return render_template('index.html')
@@ -38,9 +38,9 @@ def select():
 
 @app.route("/select/result", methods=["POST"])
 def Coffee_post():
-   Caffeine = request.form['Caffeine_give']
-   Hot = request.form['Hot_give']
-   Sweet = request.form['Sweet_give']
+   Caffeine = int(request.form['Caffeine_give'])
+   Hot = int(request.form['Hot_give'])
+   Sweet = int(request.form['Sweet_give'])
 
    if Caffeine == 0 and Hot == 0 and Sweet == 0:
       return jsonify({'msg':'/result/SCD'})#쌉차디
@@ -132,7 +132,6 @@ def resultSCD():
 def SCD_get():
     rand = random.randint(1, 3)
     return jsonify({'Cafe':db.CafeSapChaDe.find_one({'id': int(rand)})})
->>>>>>> d661709447461c14cb68b9b7307e7e05419d315f
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
