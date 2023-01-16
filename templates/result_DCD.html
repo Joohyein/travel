@@ -98,7 +98,7 @@
                 let rows = response['result_DCD']
                 for (let i = 0; i < rows.length; i++) {
 
-                    let name = rows[i]['name']
+                    let name = rows[i]['Drink']
                     let img = rows[i]['img_url']
                     let comment = rows[i]['comment']
 
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="img">
-                      <img src="$(img_url}"/>
+                      <img src="${img}"/>
                     </div>
 
                     <div class="comment">
