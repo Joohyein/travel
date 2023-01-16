@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!DOCTYPE html>
     <html lang="en">
-    <head>
+
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,20 +84,21 @@
       </style>
 
       <script>
-
-        function result_SCC(num) {
+        $(document).ready(function(){
+            result_SCC();
+        });
+        function result_SCC() {
           $.ajax({
             type: "GET",
-            url: "/result/SCC",
+            url: "/result/SCC1",
             data: {},
             success: function (response) {
                 console.log(response)
-                let rows = response['result_SCC']
-                for (let i = 0; i < rows.length; i++) {
 
-                    let name = rows[i]['name']
-                    let img = rows[i]['img_url']
-                    let comment = rows[i]['comment']
+                let rows = response['Cafe']
+                console.log(rows)
+                    let name = rows['Drink']
+                    let img = rows['image_url']
 
                     let temp_html = `
                     <div class="name">
@@ -108,15 +106,16 @@
                     </div>
 
                     <div class="img">
-                      <img src="$(img_url}"/>
+                      <img src="${img}"/>
                     </div>
 
                     <div class="comment">
-                      <p>${comment}</p>
+                      <p>오늘 ${name} 한 잔 어때요?</p>
                     </div>
                    `
 
-                }
+                    $('#body').append(temp_html)
+
             }
           });
         }
@@ -125,19 +124,22 @@
 
 
 </head>
+
 <body>
+<div id = "body">
 
-<div class="name">
-  <h1>${name}</h1>
 </div>
+<!--<div class="name">-->
+<!--  <h1>${name}</h1>-->
+<!--</div>-->
 
-<div class="img">
-  <img src="$(img_url}"/>
-</div>
+<!--<div class="img">-->
+<!--  <img src="$(img_url}"/>-->
+<!--</div>-->
 
-<div class="comment">
-  <p>${comment}</p>
-</div>
+<!--<div class="comment">-->
+<!--  <p>${comment}</p>-->
+<!--</div>-->
 
 <div class="backhome">
   <button>홈으로</button>
