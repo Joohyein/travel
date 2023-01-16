@@ -9,6 +9,6 @@ client = MongoClient('mongodb+srv://test:sparta@cluster0.igj8fho.mongodb.net/clu
 db = client.dbsparta
 
 doc = {
-         'td' : "이름을 적어주세요"
+         'td' : "설연주"
     }
 db.trevel.insert_one(doc)
